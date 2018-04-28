@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void binarySearch (vector <int> tab, int to_insert, int left_i, int right_i) {
+void binaryInsert (vector <int> tab, int to_insert, int left_i, int right_i) {
     // get the mid index
     int _temp = (left_i + right_i)/2;
 
@@ -22,7 +22,7 @@ void binarySearch (vector <int> tab, int to_insert, int left_i, int right_i) {
     } else {
         return;
     }
-    binarySearch(tab, to_insert, left_i, right_i);
+    binaryInsert(tab, to_insert, left_i, right_i);
 }
 
 int main () {
@@ -36,6 +36,6 @@ int main () {
     int to_insert;
     cin >> to_insert;
 
-    binarySearch(tab, to_insert, 0, tab.size()-1);
+    binaryInsert(tab, to_insert, 0, tab.size()-1);
     return 0;
 }

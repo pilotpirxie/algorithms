@@ -4,10 +4,9 @@
 using namespace std;
 
 // sorted array, key to find, minimum index of search, maximum index of search
-void binarySearch (vector <int> tab, int search_for, int left_i, int right_i) {
+void interpolationSearch (vector <int> tab, int search_for, int left_i, int right_i) {
 
-    // temporary variable set to mid index
-    int _temp = (left_i + right_i)/2;
+    int _temp = left_i + ((right_i-left_i)/(tab[right_i]-tab[left_i]))*(search_for-tab[left_i]);
 
     // when found
     if ( search_for == tab[_temp] ) {
@@ -15,17 +14,17 @@ void binarySearch (vector <int> tab, int search_for, int left_i, int right_i) {
         return;
     // when the key is greater than value under current mid index
     } else if ( search_for > tab[_temp] ) {
-        left_i = _temp;
+        left_i = _temp +1;
     // when the key is smaller than value under current mid index
     } else if ( search_for < tab[_temp]) {
-        right_i = _temp;
+        right_i = _temp - 1;
         // bullet proof
     } else {
         return;
     }
 
     // call this function with new parameters
-    binarySearch(tab, search_for, left_i, right_i);
+    interpolationSearch(tab, search_for, left_i, right_i);
 
 }
 
@@ -39,6 +38,6 @@ int main () {
         tab.push_back(_temp);
     }
 
-    binarySearch(tab, search_for, 0, tab.size()-1);
+    interpolationSearch(tab, search_for, 0, tab.size()-1);
     return 0;
 }
