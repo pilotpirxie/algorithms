@@ -23,25 +23,32 @@ int binarySearch(vector<int> tab, int item, int low, int high) {
 }
 
 void insertionSort(vector<int> tab) {
-    int i, loc, j, k, selected;
-    for (i = 1; i < tab.size(); ++i) {
-        j = i - 1;
-        selected = tab[i];
-        loc = binarySearch(tab, selected, 0, j);
-        while (j >= loc) {
+    for (int i = 1; i < tab.size(); i++) {
+        // variable for storing information about lowest index to move by one
+        int j = i - 1;
+
+        // select value to insert
+        int selected = tab[i];
+
+        // find position to insert
+        int newPosition = binarySearch(tab, selected, 0, j);
+
+        // move all elements by one
+        while (j >= newPosition) {
             tab[j+1] = tab[j];
             j--;
         }
         tab[j+1] = selected;
     }
 
+    // print all elements
     for ( int i = 0; i < tab.size(); i++ ) {
         cout << tab[i] << " ";
     }
 }
 
 int main(){
-    vector<int> tab = {4,3,2,10,12,1,5,6};
+    vector<int> tab = {4,3,2,10,12,1,5,6,-30};
     insertionSort(tab);
     return 0;
 }
