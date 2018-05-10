@@ -38,7 +38,7 @@ int main () {
 
     // get some random elements
     srand(time(NULL));
-    for ( int i = 0; i < 5; i++ ) {
+    for ( int i = 0; i < 25; i++ ) {
         tab.push_back(rand() % 100);
     }
 
